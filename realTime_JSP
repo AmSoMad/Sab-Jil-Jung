@@ -1,0 +1,61 @@
+ <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+  
+  <script type="text/javascript">
+    
+    
+    document.addEventListener("DOMContentLoaded", function() {setInterval(updateSenser1, 100);});
+    document.addEventListener("DOMContentLoaded", function() {setInterval(updateSenser2, 100);});
+    document.addEventListener("DOMContentLoaded", function() {setInterval(updateSenser3, 100);});
+    document.addEventListener("DOMContentLoaded", function() {setInterval(updateSenser4, 100);});
+   
+    
+    function updateSenser1() {
+    	$.ajax({
+    		url:"http://192.168.3.18:8090/GetSenser_1",
+    		type:"get",
+    		cache:false,
+    		success:function(data){
+    			$("#Sensor1").html(data);
+    		}
+    		
+    	})		;
+    	
+	}
+    function updateSenser2() {
+    	$.ajax({
+    		url:"http://192.168.3.18:8090/GetSenser_2",
+    		type:"get",
+    		cache:false,
+    		success:function(data){
+    			$("#Sensor2").html(data);
+    		}
+    		
+    	})		;
+    	
+	}
+    function updateSenser3() {
+    	$.ajax({
+    		url:"http://192.168.3.18:8090/GetSenser_3",
+    		type:"get",
+    		cache:false,
+    		success:function(data){
+    			$("#Sensor3").html(data);
+    		}
+    		
+    	})		;
+    	
+	}
+    function updateSenser4() {
+    	$.ajax({
+    		url:"http://192.168.3.18:8090/GetSenser_4",
+    		type:"get",
+    		cache:false,
+    		success:function(data){
+    			$("#Sensor4").html(data);
+    		}
+    		
+    	})		;
+    	
+	}
+    
+    </script>
