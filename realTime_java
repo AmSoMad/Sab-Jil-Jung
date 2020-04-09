@@ -1,0 +1,42 @@
+package org.senser.test;
+
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class AjexController {
+	
+	@GetMapping("/GetSenser_1")
+	public String senser1() {
+		int random = (int)(Math.random()*100);
+		String str = String.valueOf(random);
+		System.out.println(str);
+		return str;
+	}
+	
+	@GetMapping("/GetSenser_2")
+	public String senser2() {
+		int random = (int)(Math.random()*100);
+		String str = String.valueOf(random);
+		System.out.println(str);
+		return str;
+	}
+	
+	@GetMapping("/GetSenser_3")
+	public String senser3() {
+		int random = (int)(Math.random()*100);
+		String str = String.valueOf(random);
+		System.out.println(str);
+		return str;
+	}
+	
+	@GetMapping("/GetSenser_4")
+	public String senser4() {
+		int random = (int)(Math.random()*100);
+		String str = String.valueOf(random);
+		System.out.println(str);
+		return str;
+	}
+	
+}
