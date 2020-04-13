@@ -1,0 +1,169 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+  <head>
+ <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+  <link rel="stylesheet" href="../css/styles_Stellar.css" />
+  <link rel="stylesheet" href="../data/flot-data.js" />
+  <link rel="stylesheet" href="../data/morris-data.js" />
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  
+  <script type="text/javascript">
+  google.charts.load('current', {packages: ['corechart', 'line']});
+  google.charts.setOnLoadCallback(drawCurveTypes);
+  
+ 
+  
+  
+    document.addEventListener("DOMContentLoaded", function() {setInterval(updateSenser1, 100);});
+    document.addEventListener("DOMContentLoaded", function() {setInterval(updateSenser2, 100);});
+    document.addEventListener("DOMContentLoaded", function() {setInterval(updateSenser3, 100);});
+    document.addEventListener("DOMContentLoaded", function() {setInterval(updateSenser4, 100);});
+    document.addEventListener("DOMContentLoaded", function() {setInterval(sampleData, 100);});
+    document.addEventListener("DOMContentLoaded", function() {setInterval(drawCurveTypes, 100);});
+    
+    function updateSenser1() {
+    	$.ajax({
+    		url:"http://192.168.3.18:8090/GetSensor_1",
+    		type:"get",
+    		cache:false,
+    		success:function(data){
+    			$("#Sensor1").html(data);
+    		}
+    		
+    	})		;
+    	
+	}
+    function updateSenser2() {
+    	$.ajax({
+    		url:"http://192.168.3.18:8090/GetSensor_2",
+    		type:"get",
+    		cache:false,
+    		success:function(data){
+    			$("#Sensor2").html(data);
+    		}
+    		
+    	})		;
+    	
+	}
+    function updateSenser3() {
+    	$.ajax({
+    		url:"http://192.168.3.18:8090/GetSensor_3",
+    		type:"get",
+    		cache:false,
+    		success:function(data){
+    			$("#Sensor3").html(data);
+    		}
+    		
+    	})		;
+    	
+	}
+    function updateSenser4() {
+    	$.ajax({
+    		url:"http://192.168.3.18:8090/GetSensor_4",
+    		type:"get",
+    		cache:false,
+    		success:function(data){
+    			$("#Sensor4").html(data);
+    		}
+    		
+    	})		;
+    	
+	}
+    
+    var random = Math.random*100;
+
+	function sampleData() {
+		
+    	$.ajax({
+    		url:"http://192.168.3.18:8090/GetSensor_5",
+    		type:"get",
+    		cache:false,
+    		success:function(data1){
+    			$("#sample").html(data1);
+    			return data1;
+    		}
+    		
+    		
+    	})
+    	
+	}
+    
+    
+    
+    function drawCurveTypes() {
+		
+    	var sample = sampleData();
+        var data = new google.visualization.DataTable();
+        
+        data.addColumn('number', 'X');
+        data.addColumn('number', 'Senser1');
+        
+
+        data.addRows([
+        	[0,57],[1,29],[2,90],[3,12],[4,99],[5,36],[6,39],[7,70],[8,2],[9,55],[10,2],[11,78],[12,92],[13,74],[14,1],[15,25],[16,75],[17,78],[18,26],[19,61],[20,5],[21,70],[22,93],[23,54],[24,9],[25,70],[26,75],[27,8],[28,30],[29,27],[30,38],[31,91],[32,8],[33,46],[34,81],[35,2],[36,57],[37,89],[38,77],[39,14],[40,91],[41,52],[42,94],[43,25],[44,56],[45,92],[46,60],[47,37],[48,91],[49,49],[50,47],[51,13],[52,67],[53,63],[54,13],[55,27],[56,22],[57,66],[58,98],[59,2],[60,45],[61,98],[62,83],[63,45],[64,6],[65,81],[66,61],[67,16],[68,50],[69,56],[70,93],[71,87],[72,20],[73,75],[74,74],[75,49],[76,79],[77,40],[78,68],[79,87],[80,17],[81,38],[82,87],[83,35],[84,66],[85,60],[86,22],[87,82],[88,26],[89,41],[90,44],[91,18],[92,6],[93,95],[94,12],[95,67],[96,16],[97,0],[98,12],[99,59]
+        	
+        	
+        ]);
+        
+    	
+        var options = {
+          hAxis: {
+            title: 'Time'
+          },
+          vAxis: {
+            title: 'Popularity'
+          },
+          series: {
+            1: {curveType: 'function'}
+          }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    
+    
+    </script>
+  
+  
+  
+    <meta charset="utf-8">
+    <title>씬이나</title>
+    <meta name="description" content="A Bootstrap 4 admin dashboard theme that will get you started. The sidebar toggles off-canvas on smaller screens. This example also include large stat blocks, modal and cards. The top navbar is controlled by a separate hamburger toggle button." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Codeply">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/styles_Stellar.css" />
+
+  </head>
+  <body >
+	
+				aaaaaaaaaaaaaaa
+
+
+<div id="chart_div" style="width: 1800px; height: 800px;" ></div>
+	<span id="sample"></span>
+
+
+				aaaaaaaaaaaaa
+						
+			
+    
+    
+
+	
+
+	
+    
+    
+    
+    
+    <script src="/js/scripts.js"></script>
+  </body>
+</html>
